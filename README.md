@@ -11,11 +11,11 @@ This is a simple script that uploads the contents of a jekyll-generated `_site` 
 
 # Installation
 
-1. Log into Rackspace Cloud Files and create your container.  _You must create your container first, the script will not do that_.
+* Log into Rackspace Cloud Files and create your container.  _You must create your container first, the script will not do that_.
 
-2. Install `fog` rubygem via `gem install fog`
+* Install `fog` rubygem via `gem install fog`
 
-3. Put a `.fog` file in your home directory that looks like this (it's a yaml file, be careful not to use tabs instead of spaces):
+* Put a `.fog` file in your home directory that looks like this (it's a yaml file, be careful not to use tabs instead of spaces):
 
 ~~~yaml
 default:
@@ -26,11 +26,11 @@ default:
 
 The rackspace regions are strings like 'iad' or 'dfw', depending on your preferred container region.  You can get your api key from the Rackspace control panel's Account page.
 
-4. Copy the `cloudfiles_upload.rb` script into the directory for your jekyll project.  It's a good idea to also make it executable via `chmod a+x cloudfiles_upload.rb`
+* Copy the `cloudfiles_upload.rb` script into the directory for your jekyll project.  It's a good idea to also make it executable via `chmod a+x cloudfiles_upload.rb`
 
-5. Build your site via `jekyll build`
+* Build your site via `jekyll build`
 
-6. Execute `./cloudfiles_upload.rb container_name` or `ruby cloudfiles_upload.rb container_name`.
+* Execute `./cloudfiles_upload.rb container_name` or `ruby cloudfiles_upload.rb container_name`.
 
 The script will spider through the `_site` subdirectory and look for any files that need to be added, deleted, or updated.  Only files whose md5 hashes differ will from those in the container will be uploaded, so it will upload files unnecessarily.
 
