@@ -78,3 +78,14 @@ to_update.each do |name, hash|
 	new_file = cloud_directory.files.create :key => name, :body => File.open(File.join(site_directory, name))
 end
 puts "\bdone."
+
+if(to_delete.size + to_create.size + to_update.size > 0)
+	puts "------------"
+	puts "Changes: "
+	puts to_delete_set.to_a.collect{|f| " D #{f}"}.join("\n") if to_delete.size > 0
+	puts to_create.collect{|f, _| " A #{f}"}.join("\n") if to_create.size > 0
+	puts to_update.collect{|f, _| " M #{f}"}.join("\n") if to_update.size > 0
+end
+
+
+
