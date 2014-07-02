@@ -36,6 +36,8 @@ The script will spider through the `_site` subdirectory and look for any files t
 
 **Note**: You may optionally leave off the `container_name` parameter, and the script will use the name of the directory you are in.  So if you name your directory and container `mysite.com`, you can just run `./cloudfiles_upload.rb` with no arguments.
 
+* [Recommended] Add `cloudfiles_upload.rb` to your `_config.yml` file's exclusion list so it doesn't get uploaded.
+
 # Disclaimer
 
 I make no guarantees about this software, though I'll happily accept pull requests for any fixes or updates that are applied.  I use this script to manage my own jekyll-based blogs, but I've only tested it on my particular machines with my particular versions of ruby, fog, etc.  Software provided as-is.
