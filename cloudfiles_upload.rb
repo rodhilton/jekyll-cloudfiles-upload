@@ -6,6 +6,7 @@ require 'set'
 require 'digest/md5'
 
 SPIN_CHARS=['|','/','-','\\']
+MAX_FILES_TO_PURGE=5
 
 def spin()
 	@counter = ((@counter || 0) + 1) % SPIN_CHARS.length
@@ -85,6 +86,23 @@ if(to_delete.size + to_create.size + to_update.size > 0)
 	puts to_delete_set.to_a.collect{|f| " D #{f}"}.join("\n") if to_delete.size > 0
 	puts to_create.collect{|f, _| " A #{f}"}.join("\n") if to_create.size > 0
 	puts to_update.collect{|f, _| " M #{f}"}.join("\n") if to_update.size > 0
+end
+
+if(to_update.length < MAX_FILES_TO_PURGE)
+	puts "------------"
+	print "Attempting to purge #{to_update.length} file(s) from CDN..."
+	purged = 0
+	to_update.each do |name, hash|
+		begin
+			ret=cloud_files_hash[name].purge_from_cdn
+			purged = purged + 1 if ret
+		rescue Exception => e
+		    #Ignore
+		end
+	end
+	puts "#{purged} file(s) purged."
+else
+	puts "Too many files modified to purge, must wait for TTL to expire."
 end
 
 
