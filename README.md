@@ -32,7 +32,7 @@ This is a simple script that uploads the contents of a jekyll-generated `_site` 
 
  6. Execute `./cloudfiles_upload.rb container_name` or `ruby cloudfiles_upload.rb container_name`.
 
-    The script will spider through the `_site` subdirectory and look for any files that need to be added, deleted, or updated.  Only files whose md5 hashes differ will from those in the container will be uploaded, so it will upload files unnecessarily.
+    The script will spider through the `_site` subdirectory and look for any files that need to be added, deleted, or updated.  Only files whose md5 hashes differ will from those in the container will be uploaded, so it will not upload files unnecessarily.
 
     **Note**: You may optionally leave off the `container_name` parameter, and the script will use the name of the directory you are in.  So if you name your directory and container `mysite.com`, you can just run `./cloudfiles_upload.rb` with no arguments.
 
