@@ -6,7 +6,7 @@ require 'set'
 require 'digest/md5'
 
 SPIN_CHARS=['|','/','-','\\']
-MAX_FILES_TO_PURGE=5
+MAX_FILES_TO_PURGE=10
 
 def spin()
 	@counter = ((@counter || 0) + 1) % SPIN_CHARS.length
